@@ -1,10 +1,11 @@
-<<<<<<< HEAD
-# fastTransfer
-
 Intro
 =====
 
 **fastTransfer** 是一个快速传输的工具，根据fatrat进行修改
+
+Develop Environment
+=====
+Qt5.5.1 + Vs2010
 
 Platforms
 =====
@@ -29,8 +30,3 @@ Functions
  12. RAR/ZIP file unpacker
  13. Scheduler
  14. Clipboard monitor
-
-
-=======
-# fastTransfer
->>>>>>> f73d4dec351687fc0aa0a111fa329eec3c069051
