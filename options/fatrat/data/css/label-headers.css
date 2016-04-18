@@ -1,0 +1,6 @@
+QLabel {
+border: 2px solid #C4C4C3;
+padding: 2px;
+min-height: 2ex;
+border-radius: 3px;
+}

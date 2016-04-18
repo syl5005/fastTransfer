@@ -1,0 +1,1 @@
+EXECUTE_PROCESS(COMMAND ln -s fatrat "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/fatrat-nogui")
