@@ -3,6 +3,10 @@ Intro
 
 **fastTransfer** 是一个快速传输的工具，根据fatrat进行修改
 
+Develop Environment
+=====
+Qt5.5.1 + Vs2010
+
 Platforms
 =====
 
