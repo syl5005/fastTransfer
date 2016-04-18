@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# fastTransfer
-
 Intro
 =====
 
@@ -29,8 +26,3 @@ Functions
  12. RAR/ZIP file unpacker
  13. Scheduler
  14. Clipboard monitor
-
-
-=======
-# fastTransfer
->>>>>>> f73d4dec351687fc0aa0a111fa329eec3c069051
