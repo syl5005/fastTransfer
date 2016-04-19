@@ -30,3 +30,6 @@ Functions
  12. RAR/ZIP file unpacker
  13. Scheduler
  14. Clipboard monitor
+ 15. RPC
+ 16. D-Bus
+ 17. 通过Setting类统一维护系统配置
