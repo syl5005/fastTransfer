@@ -30,3 +30,4 @@ Functions
  12. RAR/ZIP file unpacker
  13. Scheduler
  14. Clipboard monitor
+ 15. RPC
