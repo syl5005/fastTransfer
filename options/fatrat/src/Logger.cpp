@@ -46,10 +46,10 @@ void Logger::toggleSysLog(bool on)
 {
 	if (on != m_bSysLog)
 	{
-		if (on)
-			openlog("fatrat", LOG_PID, LOG_USER);
-		else
-			closelog();
+        if (on)
+            openlog("fatrat", LOG_PID, LOG_USER);
+        else
+            closelog();
 		m_bSysLog = on;
 	}
 }

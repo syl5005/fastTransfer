@@ -366,7 +366,7 @@ void Queue::moveToBottom(int n, bool nolock)
 	if (!nolock)
 		m_lock.unlock();
 }
-
+//获取当前Transfer
 Transfer* Queue::take(int n, bool nolock)
 {
 	Transfer* d = 0;
@@ -380,7 +380,7 @@ Transfer* Queue::take(int n, bool nolock)
 	
 	return d;
 }
-
+//删除当前Transfer
 void Queue::remove(int n, bool nolock)
 {
 	Transfer* d = take(n, nolock);
@@ -389,7 +389,7 @@ void Queue::remove(int n, bool nolock)
 		d->setState(Transfer::Paused);
 	d->deleteLater();
 }
-
+//清空当前Transfer已经传输的数据
 void Queue::removeWithData(int n, bool nolock)
 {
 	Transfer* d = take(n, nolock);

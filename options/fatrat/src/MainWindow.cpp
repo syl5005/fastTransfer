@@ -681,7 +681,7 @@ void MainWindow::refreshQueues()
 	
 	m_labelStatus.setText( QString(tr("Queue's speed: %1 down, %2 up")).arg(formatSize(downq,true)).arg(formatSize(upq,true)) );
 }
-
+//添加队列
 void MainWindow::newQueue()
 {
 	QueueDlg dlg(this);
@@ -708,7 +708,7 @@ void MainWindow::newQueue()
 		refreshQueues();
 	}
 }
-
+//删除队列
 void MainWindow::deleteQueue()
 {
 	int queue;
@@ -975,6 +975,7 @@ void MainWindow::addTransfer(QString uri, Transfer::Mode mode, QString className
 	}
 	if(qSel < 0)
 	{
+        //获取当前选中的队列
 		qSel = getSelectedQueue();
 		if(qSel < 0)
 		{
@@ -988,9 +989,11 @@ void MainWindow::addTransfer(QString uri, Transfer::Mode mode, QString className
 	m_dlgNewTransfer = new NewTransferDlg(this);
 	
 	m_dlgNewTransfer->setWindowTitle(tr("New transfer"));
+    //初始化添加新的传输使用的队列
 	m_dlgNewTransfer->m_nQueue = qSel;
+    //添加地址
 	m_dlgNewTransfer->m_strURIs = uri;
-	
+    //当传进来的url不为空
 	if(!uri.isEmpty() && className.isEmpty())
 	{
 		QStringList l = uri.split('\n', QString::SkipEmptyParts);
@@ -1004,9 +1007,9 @@ void MainWindow::addTransfer(QString uri, Transfer::Mode mode, QString className
 		m_dlgNewTransfer->m_mode = mode;
 		m_dlgNewTransfer->m_strClass = className;
 	}
-	
+    //所有传输对象
 	QList<Transfer*> listTransfers;
-	
+    //弹出添加文件对话框，获取对话框填写的文件列表
 show_dialog:
 	try
 	{
@@ -1158,17 +1161,22 @@ show_dialog:
 
 void MainWindow::deleteTransfer()
 {
+    //获取当前队列
 	Queue* q = getCurrentQueue(false);
+    //获取传输列表所有选中行
 	QList<int> sel = getSelection();
 	
 	if(!q) return;
 	
 	if(!sel.empty())
-	{
+    {
+        //删除界面选中列表项,及删除该Transfer
+        //提示是否确认删除项
 		if(QMessageBox::warning(this, tr("Delete transfers"),
 			tr("Do you really want to delete selected transfers?"),
 			QMessageBox::Yes|QMessageBox::No) == QMessageBox::Yes)
 		{
+            //删除界面传输列表选中项
 			treeTransfers->selectionModel()->clearSelection();
 			
 			q->lockW();
@@ -1178,13 +1186,15 @@ void MainWindow::deleteTransfer()
 			Queue::saveQueuesAsync();
 		}
 	}
-	
+    //更新界面
 	doneQueue(q,false);
 }
 
 void MainWindow::deleteTransferData()
 {
+    //获取当前队列
 	Queue* q = getCurrentQueue(false);
+    //获取当前所有选中队列
 	QList<int> sel = getSelection();
 	
 	if(!q) return;
@@ -1215,7 +1225,7 @@ void MainWindow::deleteTransferData()
 	
 	doneQueue(q,false);
 }
-
+//继续传输
 void MainWindow::resumeTransfer()
 {
 	Queue* q = getCurrentQueue();
@@ -1390,7 +1400,7 @@ void MainWindow::currentTabChanged(int newTab)
 	if(newTab == 1)
 		refreshDetailsTab();
 }
-
+//清除已经传输完成的
 void MainWindow::removeCompleted()
 {
 	Queue* q;
@@ -1472,12 +1482,12 @@ Queue* MainWindow::getQueue(int index, bool lock)
 		q->lock();
 	return q;
 }
-
+//获取当前队列
 Queue* MainWindow::getCurrentQueue(bool lock)
 {
 	return getQueue(getSelectedQueue(), lock);
 }
-
+//更新界面
 void MainWindow::doneQueue(Queue* q, bool unlock, bool refresh)
 {
 	if(q != 0)
@@ -1667,7 +1677,7 @@ void MainWindow::downloadModeChanged(Transfer* d, Transfer::Mode prev, Transfer:
 	}
 
 }
-
+//获取传输列表所有选中行
 QList<int> MainWindow::getSelection()
 {
 	QModelIndexList list = treeTransfers->selectionModel()->selectedRows();
