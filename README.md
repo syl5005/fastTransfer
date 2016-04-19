@@ -31,3 +31,4 @@ Functions
  13. Scheduler
  14. Clipboard monitor
  15. RPC
+ 16. D-Bus
